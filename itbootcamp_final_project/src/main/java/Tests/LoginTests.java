@@ -37,4 +37,19 @@ public class LoginTests extends BasicTest{
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
                 "[ERROR] Url of the page does not contain '/login'");
     }
+    @Test(priority = 40)
+    public void displaysErrorsWhenPasswordIsWrong() {
+        String email = "admin@admin.com";
+        String password = "password123";
+        navPage.getLoginButton().click();
+        loginPage.getEmailInputField().sendKeys(email);
+        loginPage.getPasswordInputField().sendKeys(password);
+        loginPage.getLoginButton().click();
+        messagePopUpPage.waitForThePopUpToBeVisible();
+        Assert.assertEquals(messagePopUpPage.loginErrorMessaages().getText(),
+                "Wrong password",
+                "[ERROR] Pop up for error does not contain text 'Wrong password'");
+        Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
+                "[ERROR] Url of the page does not contain '/login'");
+    }
 }
