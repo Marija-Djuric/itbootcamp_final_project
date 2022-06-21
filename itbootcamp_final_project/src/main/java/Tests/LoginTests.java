@@ -12,4 +12,14 @@ public class LoginTests extends BasicTest{
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
                 "[ERROR] Url of the page does not contain '/login'");
     }
+    @Test(priority = 20)
+    public void checksInputTypes() {
+        navPage.getLoginButton().click();
+        Assert.assertEquals(loginPage.getEmailInputField().getAttribute("type"),
+                "email",
+                "[ERROR] Email input field for the type attribute has no value email");
+        Assert.assertEquals(loginPage.getPasswordInputField().getAttribute("type"),
+                "password",
+                "[ERROR] Password input field for the type attribute has no value password");
+    }
 }
