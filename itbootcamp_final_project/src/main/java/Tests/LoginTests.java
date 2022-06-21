@@ -22,4 +22,19 @@ public class LoginTests extends BasicTest{
                 "password",
                 "[ERROR] Password input field for the type attribute has no value password");
     }
+    @Test(priority = 30)
+    public void displaysErrorsWhenUserDoesNotExist() {
+        String email = "non-existing-user@gmal.com";
+        String password = "password123";
+        navPage.getLoginButton().click();
+        loginPage.getEmailInputField().sendKeys(email);
+        loginPage.getPasswordInputField().sendKeys(password);
+        loginPage.getLoginButton().click();
+        messagePopUpPage.waitForThePopUpToBeVisible();
+        Assert.assertEquals(messagePopUpPage.loginErrorMessaages().getText(),
+                "User does not exists",
+                "[ERROR] Pop up for error does not contain text 'User does not exists'");
+        Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
+                "[ERROR] Url of the page does not contain '/login'");
+    }
 }

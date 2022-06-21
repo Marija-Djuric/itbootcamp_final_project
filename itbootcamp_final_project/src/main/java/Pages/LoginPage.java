@@ -16,6 +16,7 @@ public class LoginPage {
     public WebElement getPasswordInputField() {
         return driver.findElement(By.id("password"));
     }
-
-
+    public WebElement getLoginButton () {
+        return driver.findElement((By.xpath("//*[@type='submit']")));
+    }
 }
