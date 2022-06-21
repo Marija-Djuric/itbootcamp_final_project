@@ -52,4 +52,16 @@ public class LoginTests extends BasicTest{
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
                 "[ERROR] Url of the page does not contain '/login'");
     }
+    @Test(priority = 50)
+    public void login() {
+        String email = "admin@admin.com";
+        String password = "12345";
+        navPage.getLoginButton().click();
+        loginPage.getEmailInputField().sendKeys(email);
+        loginPage.getPasswordInputField().sendKeys(password);
+        loginPage.getLoginButton().click();
+        loginPage.waitForTitleToChange();
+        Assert.assertTrue(driver.getCurrentUrl().contains("/home"),
+                "[ERROR] Url of the page does not contain '/home'");
+    }
 }
