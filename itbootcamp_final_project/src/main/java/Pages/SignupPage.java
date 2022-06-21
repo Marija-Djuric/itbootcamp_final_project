@@ -13,6 +13,14 @@ public class SignupPage {
     public WebElement getSignMeUpButton () {
         return driver.findElement(By.linkText("SIGN UP"));
     }
-
+    public WebElement getEmailInputField () {
+        return driver.findElement(By.id("email"));
+    }
+    public WebElement getPasswordInputField () {
+        return driver.findElement(By.id("password"));
+    }
+    public WebElement getConfirmPasswordInputField () {
+        return driver.findElement(By.id("confirmPassword"));
+    }
 
 }
