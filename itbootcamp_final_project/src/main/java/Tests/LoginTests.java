@@ -64,4 +64,10 @@ public class LoginTests extends BasicTest{
         Assert.assertTrue(driver.getCurrentUrl().contains("/home"),
                 "[ERROR] Url of the page does not contain '/home'");
     }
+    @Test(priority = 60)
+    public void logout() {
+        Assert.assertTrue(navPage.getLogoutButton().isDisplayed(),
+                "[ERROR] 'Log out? button is not visible on the page");
+        navPage.getLogoutButton().click();
+    }
 }
