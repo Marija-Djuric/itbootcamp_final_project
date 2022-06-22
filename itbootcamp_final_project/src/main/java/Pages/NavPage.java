@@ -28,5 +28,13 @@ public class NavPage {
     public WebElement getHomeButton () {
         return driver.findElement(By.linkText("HOME"));
     }
+    public WebElement getAdminButton ()  {
+        return driver.findElement(By.className("btnAdmin"));
+    }
+    public WebElement getCitiesButton () {
+        return driver.findElement(By.linkText("Cities"));
+    }
+
+
 }
 
