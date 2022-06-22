@@ -11,7 +11,7 @@ public class SignupPage {
         this.driver = driver;
     }
     public WebElement getSignMeUpButton () {
-        return driver.findElement(By.linkText("SIGN UP"));
+        return driver.findElement(By.className("v-btn--contained"));
     }
     public WebElement getEmailInputField () {
         return driver.findElement(By.id("email"));
@@ -22,5 +22,7 @@ public class SignupPage {
     public WebElement getConfirmPasswordInputField () {
         return driver.findElement(By.id("confirmPassword"));
     }
-
+    public WebElement getNameInputField () {
+        return driver.findElement(By.id("name"));
+    }
 }

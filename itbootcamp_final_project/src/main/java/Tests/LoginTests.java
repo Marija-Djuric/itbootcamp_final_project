@@ -31,7 +31,7 @@ public class LoginTests extends BasicTest{
         loginPage.getPasswordInputField().sendKeys(password);
         loginPage.getLoginButton().click();
         messagePopUpPage.waitForThePopUpToBeVisible();
-        Assert.assertEquals(messagePopUpPage.loginErrorMessaages().getText(),
+        Assert.assertEquals(messagePopUpPage.errorMessaage().getText(),
                 "User does not exists",
                 "[ERROR] Pop up for error does not contain text 'User does not exists'");
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
@@ -46,7 +46,7 @@ public class LoginTests extends BasicTest{
         loginPage.getPasswordInputField().sendKeys(password);
         loginPage.getLoginButton().click();
         messagePopUpPage.waitForThePopUpToBeVisible();
-        Assert.assertEquals(messagePopUpPage.loginErrorMessaages().getText(),
+        Assert.assertEquals(messagePopUpPage.errorMessaage().getText(),
                 "Wrong password",
                 "[ERROR] Pop up for error does not contain text 'Wrong password'");
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"),

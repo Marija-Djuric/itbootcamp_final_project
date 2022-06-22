@@ -19,7 +19,7 @@ public class MessagePopUpPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("v-snack__wrapper")));
     }
-    public WebElement loginErrorMessaages() {
+    public WebElement errorMessaage() {
         return driver.findElement(By.tagName("li"));
     }
 
