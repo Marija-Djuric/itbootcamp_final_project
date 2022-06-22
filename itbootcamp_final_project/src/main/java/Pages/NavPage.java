@@ -25,6 +25,8 @@ public class NavPage {
     public WebElement getSignUpButton () {
         return driver.findElement(By.xpath("//*[contains(@class, 'btnLogin')][2]"));
     }
-
+    public WebElement getHomeButton () {
+        return driver.findElement(By.linkText("HOME"));
+    }
 }
 

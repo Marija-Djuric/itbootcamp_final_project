@@ -22,5 +22,18 @@ public class MessagePopUpPage {
     public WebElement errorMessaage() {
         return driver.findElement(By.tagName("li"));
     }
-
+    public void waitForTheVerifyYourAccountDialog() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.className("v-card")));
+    }
+    public WebElement headerFromTheVerifyYourAccountDialog() {
+        return driver.findElement(By.className("dlgVerifyAccount"));
+    }
+    public WebElement closeButtonFromTheVerifyYourAccountDialog() {
+        return driver.findElement(By.className("btnClose"));
+    }
+    public void waitForTheCloseButtonBeClicable() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(By.className("btnClose")));
+    }
 }
