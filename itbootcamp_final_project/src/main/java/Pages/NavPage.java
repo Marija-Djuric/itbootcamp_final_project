@@ -48,7 +48,20 @@ public class NavPage {
     public void getAdminCitiesPage() {
         driver.navigate().to(driver.getCurrentUrl()+("admin/cities"));
     }
-
-
+    public void getAdminUsersPage() {
+        driver.navigate().to(driver.getCurrentUrl()+("admin/users"));
+    }
+    public WebElement getEsButtonFromLanguageSelection () {
+        return driver.findElement(By.className("btnES"));
+    }
+    public WebElement getHeader() {
+        return driver.findElement(By.tagName("h1"));
+    }
+    public WebElement getCnButtonFromLanguageSelection () {
+        return driver.findElement(By.className("btnCN"));
+    }
+    public WebElement getFrButtonFromLanguageSelection () {
+        return driver.findElement(By.className("btnFR"));
+    }
 }
 

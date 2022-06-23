@@ -29,4 +29,12 @@ public class AuthRoutesTests extends BasicTest{
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
                 "[ERROR] Url of the page does not contain '/login'");
     }
-}
+    @Test(priority = 40)
+    public void forbidsVisitsToAdminUsersUrlIfNotAuthenticated() {
+        navPage.getAdminUsersPage();
+        navPage.waitForPageToLoadUp();
+        Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
+                "[ERROR] Url of the page does not contain '/login'");
+    }
+    }
+
