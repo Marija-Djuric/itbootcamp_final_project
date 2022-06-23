@@ -45,6 +45,9 @@ public class NavPage {
     public void getProfileLink () {
         driver.navigate().to(driver.getCurrentUrl()+"profile");
     }
+    public void getAdminCitiesPage() {
+        driver.navigate().to(driver.getCurrentUrl()+("admin/cities"));
+    }
 
 
 }

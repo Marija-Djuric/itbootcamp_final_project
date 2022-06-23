@@ -17,12 +17,16 @@ public class AuthRoutesTests extends BasicTest{
     }
     @Test(priority = 20)
     public void forbidsVisitsToProfileUrlIfNotAuthenticated() {
-
         navPage.getProfileLink();
         navPage.waitForPageToLoadUp();
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
                 "[ERROR] Url of the page does not contain '/login'");
-
     }
-
+    @Test(priority = 30)
+    public void forbidsVisitsToAdminCitiesUrlIfNotAuthenticated() {
+        navPage.getAdminCitiesPage();
+        navPage.waitForPageToLoadUp();
+        Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
+                "[ERROR] Url of the page does not contain '/login'");
+    }
 }
