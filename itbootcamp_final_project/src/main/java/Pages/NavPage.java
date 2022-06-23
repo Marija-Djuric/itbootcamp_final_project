@@ -3,6 +3,10 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class NavPage {
     private WebDriver driver;
@@ -25,14 +29,18 @@ public class NavPage {
     public WebElement getSignUpButton () {
         return driver.findElement(By.xpath("//*[contains(@class, 'btnLogin')][2]"));
     }
-    public void getHomeButton () {
-        driver.navigate().to(driver.getCurrentUrl()+"/home");
+    public void getHomeLink() {
+        driver.navigate().to(driver.getCurrentUrl()+"home");
     }
     public WebElement getAdminButton ()  {
         return driver.findElement(By.className("btnAdmin"));
     }
     public WebElement getCitiesButton () {
         return driver.findElement(By.linkText("Cities"));
+    }
+    public void waitForLoginPageToLoadUp () {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.urlContains("/login"));
     }
 
 
