@@ -40,4 +40,20 @@ public class AdminCitiesTests extends BasicTest{
         Assert.assertTrue(citiesPage.getAMessageFromAPopUpCity().getText().contains("Saved successfully"),
                 "[ERROR] Pop up for error does not contain text 'Saved successfully'");
     }
+    @Test(priority = 40)
+    public void editCity() {
+        String oldCityName = "Marija's city";
+        String newCityName = "Marija's city Edited";
+        navPage.getAdminButton().click();
+        navPage.getCitiesButton().click();
+        citiesPage.getASearchField().sendKeys(oldCityName);
+        citiesPage.waitForACertainNumberOfRowsToAppear(1);
+        citiesPage.getEditButton().click();
+        citiesPage.getEditInputField().clear();
+        citiesPage.getEditInputField().sendKeys(newCityName);
+        citiesPage.getSaveButton().click();
+        citiesPage.waitForThePopUpToBeVisibleCity();
+        Assert.assertTrue(citiesPage.getAMessageFromAPopUpCity().getText().contains("Saved successfully"),
+                "[ERROR] Pop up for error does not contain text 'Saved successfully'");
+    }
 }
