@@ -24,4 +24,17 @@ public class CitiesPage {
     public WebElement getInputFieldForNewItem () {
         return driver.findElement(By.id("name"));
     }
+    public WebElement getSaveButton () {
+        return driver.findElement(By.className("btnSave"));
+    }
+    public void waitForThePopUpToBeVisibleCity() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("success")));
+    }
+    public WebElement getAMessageFromAPopUpCity() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("success")));
+        return driver.findElement(By.className("success"));
+    }
+
 }

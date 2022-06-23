@@ -27,4 +27,17 @@ public class AdminCitiesTests extends BasicTest{
                 "text",
                 "[ERROR] City input field for the attribute type has no value 'text'");
     }
+    @Test(priority = 30)
+    public void createNewCity() throws InterruptedException {
+        String city = "Marija's city";
+        navPage.getAdminButton().click();
+        navPage.getCitiesButton().click();
+        citiesPage.getNewItemButton().click();
+        citiesPage.waitForTheEditDialogToBeVisible();
+        citiesPage.getInputFieldForNewItem().sendKeys(city);
+        citiesPage.getSaveButton().click();
+        citiesPage.waitForThePopUpToBeVisibleCity();
+        Assert.assertTrue(citiesPage.getAMessageFromAPopUpCity().getText().contains("Saved successfully"),
+                "[ERROR] Pop up for error does not contain text 'Saved successfully'");
+    }
 }
