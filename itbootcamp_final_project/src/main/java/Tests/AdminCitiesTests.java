@@ -80,6 +80,19 @@ public class AdminCitiesTests extends BasicTest{
     }
     @Test(priority = 60)
     public void deleteCity() {
-        
+        String cityName = "M's city Edited";
+        navPage.getAdminButton().click();
+        navPage.getCitiesButton().click();
+        citiesPage.getASearchField().sendKeys(cityName);
+        citiesPage.waitForACertainNumberOfRowsToAppear(1);
+        Assert.assertEquals(citiesPage.getACellFromASpecificRow(1,2).getText(),
+                cityName,
+                "[ERROR] In the first row of Name column is not text 'Marija's city Edited'");
+        citiesPage.getDeleteButton(1).click();
+        citiesPage.waitForDeleteDialogToBeVIsible();
+        citiesPage.getDeleteButtonFromDialog().click();
+        messagePopUpPage.waitForThePopUpToBeVisible();
+        Assert.assertTrue(citiesPage.getAMessageFromAPopUpCity().getText().contains("Deleted successfully"),
+                "[ERROR] Pop up for error does not contain text 'Deleted successfully'");
     }
 }

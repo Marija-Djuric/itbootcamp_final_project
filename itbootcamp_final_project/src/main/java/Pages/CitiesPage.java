@@ -60,4 +60,14 @@ public class CitiesPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until((ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(@class, 'v-text-field--single-line')]/div/div/div[3]"))));
     }
+    public WebElement getDeleteButton(int rowIndex)  {
+        return driver.findElements(By.id("delete")).get(rowIndex-1);
+    }
+    public void waitForDeleteDialogToBeVIsible() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("v-dialog--active")));
+    }
+    public WebElement getDeleteButtonFromDialog() {
+        return driver.findElement(By.xpath("//div[contains(@class,'v-card__actions')]/button[2]"));
+    }
 }
