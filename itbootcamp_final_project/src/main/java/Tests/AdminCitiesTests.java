@@ -17,4 +17,14 @@ public class AdminCitiesTests extends BasicTest{
         Assert.assertTrue(driver.getCurrentUrl().contains("/admin/cities"),
                 "[ERROR] Url of the page does not contain '/admin/cities'");
     }
+    @Test(priority = 20)
+    public void checksInputTypesForCreateOrEditNewCity() {
+        navPage.getAdminButton().click();
+        navPage.getCitiesButton().click();
+        citiesPage.getNewItemButton().click();
+        citiesPage.waitForTheEditDialogToBeVisible();
+        Assert.assertEquals(citiesPage.getInputFieldForNewItem().getAttribute("type"),
+                "text",
+                "[ERROR] City input field for the attribute type has no value 'text'");
+    }
 }
