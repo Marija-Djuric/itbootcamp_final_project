@@ -38,9 +38,12 @@ public class NavPage {
     public WebElement getCitiesButton () {
         return driver.findElement(By.linkText("Cities"));
     }
-    public void waitForLoginPageToLoadUp () {
+    public void waitForPageToLoadUp() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.urlContains("/login"));
+    }
+    public void getProfileLink () {
+        driver.navigate().to(driver.getCurrentUrl()+"profile");
     }
 
 
