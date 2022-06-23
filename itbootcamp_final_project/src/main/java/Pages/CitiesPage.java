@@ -43,10 +43,21 @@ public class CitiesPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.numberOfElementsToBe(By.tagName("tr"),numberOfRows+1));
     }
-    public WebElement getEditButton() {
-        return driver.findElement(By.id("edit"));
+    public WebElement getEditButton(int rowIndex) {
+        return driver.findElements(By.id("edit")).get(rowIndex-1);
     }
     public WebElement getEditInputField() {
         return driver.findElement(By.id("name"));
+    }
+    public WebElement getACellFromASpecificRow(int rowIndex, int columnIndex) {
+        return driver.findElement(By.xpath("//tbody/tr[" + rowIndex + "]/td[" + columnIndex + "]"));
+    }
+    public void waitForEditButtonToBeClickable() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("edit")));
+    }
+    public void waitForSearchButtonToBeClickable() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until((ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(@class, 'v-text-field--single-line')]/div/div/div[3]"))));
     }
 }
